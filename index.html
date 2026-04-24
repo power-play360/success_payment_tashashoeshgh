@@ -100,7 +100,16 @@
             color: #777;
             margin: 0;
         }
-
+        .highlight-box {
+            background-color: #fff9c4; /* Soft yellow highlight */
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: 700;
+            color: #d32f2f; /* Dark red for urgency */
+            border: 1px dashed #fbc02d;
+            margin-top: 10px;
+        }
         /* Responsive adjustments for mobile */
         @media (max-width: 480px) {
             .container {
@@ -135,7 +144,7 @@
         <div class="confirmation">
             <div class="success-icon">✓</div>
             <p class="check-email">Registration Confirmed!</p>
-            <p>Please check your email for the meeting link.</p>
+            <p class="highlight-box">Please check your email for the meeting link.</p>
         </div>
 
         <div style="margin-top: 30px;">
