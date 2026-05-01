@@ -1,3 +1,6 @@
+Here is the updated code! 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +34,43 @@
             text-align: center;
         }
 
+        /* Checkmark and Confirmation Text (Moved to top) */
+        .confirmation {
+            border-bottom: 1px solid #e1e8ed; /* Changed from border-top */
+            padding-bottom: 30px; /* Changed from padding-top */
+            margin-bottom: 30px; /* Changed from margin-top */
+        }
+
+        .success-icon {
+            font-size: 40px;
+            color: #24b47e; /* Matches Stripe Success Green */
+            margin-bottom: 10px;
+        }
+
+        p.payment-received {
+            font-size: 16px;
+            color: #555;
+            margin: 0 0 5px;
+        }
+
+        p.check-email {
+            font-size: 22px; /* Slightly larger for emphasis */
+            font-weight: 600;
+            color: #111;
+            margin: 0 0 15px;
+        }
+
+        .highlight-box {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: 700;
+            color: #1fb8ff;
+            border: 1px dashed #1fb8ff;
+            margin-top: 10px;
+        }
+
         /* The Portrait with the ornate frame */
         .portrait-frame {
             margin: 0 auto 30px;
@@ -40,7 +80,7 @@
         .portrait-frame img {
             width: 100%;
             height: auto;
-            /* border-radius: 50%; /* Ensures the image fits the round frame */ */
+            border-radius: 8px; /* Added a subtle rounding to the image */
         }
 
         /* Typography */
@@ -57,7 +97,7 @@
             margin: 0 0 30px;
         }
 
-        /* Description Styling (including Arabic) */
+        /* Description Styling (including Arabic/Persian) */
         .course-description {
             font-size: 16px;
             color: #555;
@@ -74,42 +114,13 @@
             font-family: Arial, sans-serif; /* Fallback for Persian font rendering */
         }
 
-        /* Checkmark and Confirmation Text */
-        .confirmation {
-            border-top: 1px solid #e1e8ed;
-            padding-top: 30px;
-            margin-top: 30px;
-        }
-
-        .success-icon {
-            font-size: 40px;
-            color: #24b47e; /* Matches Stripe Success Green */
-            margin-bottom: 10px;
-        }
-
-        p.check-email {
-            font-size: 18px;
-            font-weight: 600;
-            color: #111;
-            margin: 0 0 15px;
-        }
-
         /* Support Email */
         p.support-email {
             font-size: 14px;
             color: #777;
             margin: 0;
         }
-        .highlight-box {
-            background-color: #ffffff; /* Soft yellow highlight */
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
-            font-weight: 700;
-            color: #1fb8ff; /* Dark red for urgency */
-            border: 1px dashed #1fb8ff;
-            margin-top: 10px;
-        }
+
         /* Responsive adjustments for mobile */
         @media (max-width: 480px) {
             .container {
@@ -125,6 +136,16 @@
 <body>
 
     <div class="container">
+        
+        <!-- Confirmation Block Moved to the Top -->
+        <div class="confirmation">
+            <div class="success-icon">✓</div>
+            <p class="payment-received">We received your payment, Thank you!</p>
+            <p class="check-email">Registration Confirmed!</p>
+            <p class="highlight-box">Please check your email for the meeting link.</p>
+        </div>
+
+        <!-- Logo and Course Info -->
         <div class="portrait-frame">
             <img src="logo_new.jpeg" alt="Carl Jung Portrait">
         </div>
@@ -137,12 +158,8 @@
                 This journey is an inner journey, inspired by the teachings of Carl Jung, guiding the individual toward discovering the hidden layers of the psyche. It is a journey within, where one encounters fears, wounds, shadows, and undiscovered potentials, reconnects with the lost parts of the self, and moves step by step toward awareness, wholeness, and the authentic self.
             </p>
             <p class="description-fa">
+                این سفر، سفری درونی است؛ الهام‌گرفته از آموزه‌های كارل يونگ که انسان را به سوی کشف لایه‌های پنهان روان هدایت می‌کند. سفری از درون است که در آن فرد با ترس‌ها، زخم‌ها، سایه‌ها و توانایی‌های ناشناخته خود روبه‌رو می‌شود، بخش‌های گمشده وجودش را بازمی‌شناسد و قدم‌به‌قدم به سوی آگاهی، تمامیت و خویشتن اصیل حرکت می‌کند
             </p>
-        </div>
-این سفر، سفری درونی است؛ الهام‌گرفته از آموزه‌های كارل يونگ که انسان را به سوی کشف لایه‌های پنهان روان هدایت می‌کند. سفری از درون است که در آن فرد با ترس‌ها، زخم‌ها، سایه‌ها و توانایی‌های ناشناخته خود روبه‌رو می‌شود، بخش‌های گمشده وجودش را بازمی‌شناسد و قدم‌به‌قدم به سوی آگاهی، تمامیت و خویشتن اصیل حرکت می‌کند     <div class="confirmation">
-            <div class="success-icon">✓</div>
-            <p class="check-email">Registration Confirmed!</p>
-            <p class="highlight-box">Please check your email for the meeting link.</p>
         </div>
 
         <div style="margin-top: 30px;">
@@ -152,3 +169,4 @@
 
 </body>
 </html>
+```
