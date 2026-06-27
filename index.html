@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Confirmed | Awakening the Hero Within</title>
     <style>
-        /* Base Styles for a Premium Look */
+        /* Base Styles */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
@@ -19,7 +19,6 @@
             line-height: 1.6;
         }
 
-        /* The Main White Container */
         .container {
             width: 100%;
             max-width: 600px;
@@ -31,102 +30,115 @@
             text-align: center;
         }
 
-        /* Checkmark and Confirmation Text (Moved to top) */
         .confirmation {
-            border-bottom: 1px solid #e1e8ed; /* Changed from border-top */
-            padding-bottom: 30px; /* Changed from padding-top */
-            margin-bottom: 30px; /* Changed from margin-top */
+            border-bottom: 1px solid #e1e8ed;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
         }
 
         .success-icon {
             font-size: 40px;
-            color: #24b47e; /* Matches Stripe Success Green */
+            color: #0d9488; /* Deep Teal */
             margin-bottom: 10px;
         }
 
-        p.payment-received {
-            font-size: 16px;
-            color: #555;
-            margin: 0 0 5px;
+        p.payment-received { font-size: 16px; color: #555; margin: 0 0 5px; }
+        p.check-email { font-size: 22px; font-weight: 600; color: #111; margin: 0 0 15px; }
+
+        /* Dynamic Delivery Info Section */
+        .delivery-info {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .delivery-text { font-size: 14px; color: #475569; margin: 0 0 15px 0; }
+        .delivery-text strong { color: #0f172a; }
+
+        .toggle-group {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 5px;
         }
 
-        p.check-email {
-            font-size: 22px; /* Slightly larger for emphasis */
+        .toggle-label {
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .dynamic-form {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .platform-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+            display: none; /* Specific inputs hidden by default */
+        }
+
+        .platform-input:focus {
+            border-color: #0d9488;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        .request-btn {
+            background-color: #0d9488; /* Deep Teal */
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 15px;
             font-weight: 600;
-            color: #111;
-            margin: 0 0 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            max-width: 300px;
         }
 
-        .highlight-box {
-            background-color: #ffffff;
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
-            font-weight: 700;
-            color: #1fb8ff;
-            border: 1px dashed #1fb8ff;
+        .request-btn:hover { background-color: #0f766e; }
+        .request-btn:disabled { background-color: #94a3b8; cursor: not-allowed; }
+
+        .success-msg {
+            display: none;
+            color: #0d9488;
+            font-size: 14px;
+            font-weight: 600;
             margin-top: 10px;
         }
 
-        /* The Portrait with the ornate frame */
-        .portrait-frame {
-            margin: 0 auto 30px;
-            max-width: 250px;
-        }
+        /* Portrait & Typography */
+        .portrait-frame { margin: 0 auto 30px; max-width: 250px; }
+        .portrait-frame img { width: 100%; height: auto; border-radius: 8px; }
+        h1.course-title { font-size: 28px; font-weight: 700; margin: 0 0 10px; color: #111; }
+        p.instructor { font-size: 16px; color: #666; margin: 0 0 30px; }
+        .course-description { font-size: 16px; color: #555; margin: 0 0 30px; text-align: justify; }
+        .description-en { margin-bottom: 20px; }
+        .description-fa { direction: rtl; font-family: Arial, sans-serif; }
+        p.support-email { font-size: 14px; color: #777; margin: 0; }
 
-        .portrait-frame img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px; /* Added a subtle rounding to the image */
-        }
-
-        /* Typography */
-        h1.course-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0 0 10px;
-            color: #111;
-        }
-
-        p.instructor {
-            font-size: 16px;
-            color: #666;
-            margin: 0 0 30px;
-        }
-
-        /* Description Styling (including Arabic/Persian) */
-        .course-description {
-            font-size: 16px;
-            color: #555;
-            margin: 0 0 30px;
-            text-align: justify;
-        }
-
-        .description-en {
-            margin-bottom: 20px;
-        }
-
-        .description-fa {
-            direction: rtl; /* Right-to-Left for Arabic/Farsi text */
-            font-family: Arial, sans-serif; /* Fallback for Persian font rendering */
-        }
-
-        /* Support Email */
-        p.support-email {
-            font-size: 14px;
-            color: #777;
-            margin: 0;
-        }
-
-        /* Responsive adjustments for mobile */
         @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-                margin: 20px;
-            }
-            h1.course-title {
-                font-size: 24px;
-            }
+            .container { padding: 20px; margin: 20px; }
+            h1.course-title { font-size: 24px; }
         }
     </style>
 </head>
@@ -134,15 +146,39 @@
 
     <div class="container">
         
-        <!-- Confirmation Block Moved to the Top -->
         <div class="confirmation">
             <div class="success-icon">✓</div>
             <p class="payment-received">We received your payment, Thank you!</p>
             <p class="check-email">Registration Confirmed!</p>
-            <p class="highlight-box">Please check your WhatsApp for the meeting link.</p>
+            
+            <div class="delivery-info">
+                <p class="delivery-text" id="dynamic-delivery-text">
+                    Your joining link has been sent to your registered email and phone number.
+                </p>
+                <p class="delivery-text" style="font-size: 13px; margin-bottom: 10px;">
+                    Need the link sent somewhere else? Select an option below:
+                </p>
+                
+                <!-- Checkboxes -->
+                <div class="toggle-group">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="check-whatsapp" onchange="toggleFields()"> WhatsApp
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="check-email" onchange="toggleFields()"> Email
+                    </label>
+                </div>
+
+                <!-- Dynamic Form -->
+                <form id="update-form" class="dynamic-form">
+                    <input type="tel" id="new-whatsapp" class="platform-input" placeholder="WhatsApp (e.g. +971004676300)">
+                    <input type="email" id="new-email" class="platform-input" placeholder="Email Address">
+                    <button type="submit" id="request-btn" class="request-btn">Request Link</button>
+                    <div id="success-msg" class="success-msg">✓ Link requested successfully!</div>
+                </form>
+            </div>
         </div>
 
-        <!-- Logo and Course Info -->
         <div class="portrait-frame">
             <img src="logo_new2.jpeg" alt="Carl Jung Portrait">
         </div>
@@ -154,9 +190,9 @@
             <p class="description-en">
                 This journey is an inner journey, inspired by the teachings of Carl Jung, guiding the individual toward discovering the hidden layers of the psyche. It is a journey within, where one encounters fears, wounds, shadows, and undiscovered potentials, reconnects with the lost parts of the self, and moves step by step toward awareness, wholeness, and the authentic self.
             </p>
-            <!-- Farsi text moved correctly inside the tags -->
             <p class="description-fa">
-این سفر، سفری درونی است؛ الهام‌گرفته از آموزه‌های كارل يونگ که انسان را به سوی کشف لایه‌های پنهان روان هدایت می‌کند. سفری از درون است که در آن فرد با ترس‌ها، زخم‌ها، سایه‌ها و توانایی‌های ناشناخته خود روبه‌رو می‌شود، بخش‌های گمشده وجودش را بازمی‌شناسد و قدم‌به‌قدم به سوی آگاهی، تمامیت و خویشتن اصیل حرکت می‌کند            </p>
+این سفر، سفری درونی است؛ الهام‌گرفته از آموزه‌های كارل يونگ که انسان را به سوی کشف لایه‌های پنهان روان هدایت می‌کند. سفری از درون است که در آن فرد با ترس‌ها، زخم‌ها، سایه‌ها و توانایی‌های ناشناخته خود روبه‌رو می‌شود، بخش‌های گمشده وجودش را بازمی‌شناسد و قدم‌به‌قدم به سوی آگاهی، تمامیت و خویشتن اصیل حرکت می‌کند            
+            </p>
         </div>
 
         <div style="margin-top: 30px;">
@@ -164,5 +200,95 @@
         </div>
     </div>
 
+    <script>
+        // 1. Dynamic Text Replacement
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerEmail = urlParams.get('email');
+        const customerPhone = urlParams.get('phone');
+        const deliveryText = document.getElementById('dynamic-delivery-text');
+        
+        if (customerEmail && customerPhone) {
+            deliveryText.innerHTML = `Your joining link has been sent to <strong>${customerEmail}</strong> and <strong>${customerPhone}</strong>.`;
+        } else if (customerEmail) {
+            deliveryText.innerHTML = `Your joining link has been sent to <strong>${customerEmail}</strong>.`;
+        } else if (customerPhone) {
+            deliveryText.innerHTML = `Your joining link has been sent to <strong>${customerPhone}</strong>.`;
+        }
+
+        // 2. Toggle Form Fields Based on Checkboxes
+        function toggleFields() {
+            const checkWa = document.getElementById('check-whatsapp').checked;
+            const checkEmail = document.getElementById('check-email').checked;
+            const form = document.getElementById('update-form');
+            const inputWa = document.getElementById('new-whatsapp');
+            const inputEmail = document.getElementById('new-email');
+
+            // Show/Hide Entire Form
+            form.style.display = (checkWa || checkEmail) ? 'flex' : 'none';
+
+            // Toggle WhatsApp Input
+            if (checkWa) {
+                inputWa.style.display = 'block';
+                inputWa.required = true;
+            } else {
+                inputWa.style.display = 'none';
+                inputWa.required = false;
+                inputWa.value = ''; 
+            }
+
+            // Toggle Email Input
+            if (checkEmail) {
+                inputEmail.style.display = 'block';
+                inputEmail.required = true;
+            } else {
+                inputEmail.style.display = 'none';
+                inputEmail.required = false;
+                inputEmail.value = ''; 
+            }
+        }
+
+        // 3. Form Submission
+        document.getElementById('update-form').addEventListener('submit', async (e) => {
+            e.preventDefault(); 
+            
+            const btn = document.getElementById('request-btn');
+            const inputWa = document.getElementById('new-whatsapp');
+            const inputEmail = document.getElementById('new-email');
+            const successMsg = document.getElementById('success-msg');
+            
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+
+            const payload = {
+                originalEmail: customerEmail || "Unknown",
+                updatedPhone: inputWa.value || null,
+                updatedEmail: inputEmail.value || null,
+                source: "Confirmation Page Override"
+            };
+
+            try {
+                // REPLACE WITH YOUR MAKE WEBHOOK URL
+                const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/betkmmfkrolnimvpx9n27gaah5ynn6je";
+                
+                await fetch(MAKE_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Success UI
+                btn.style.display = 'none';
+                inputWa.style.display = 'none';
+                inputEmail.style.display = 'none';
+                document.querySelector('.toggle-group').style.display = 'none';
+                successMsg.style.display = 'block';
+                
+            } catch (error) {
+                console.error("Webhook failed:", error);
+                btn.innerText = "Error. Please try again.";
+                btn.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
