@@ -203,6 +203,7 @@
     <script>
         // 1. Dynamic Text Replacement
         const urlParams = new URLSearchParams(window.location.search);
+        const customerName = urlParams.get('name');
         const customerEmail = urlParams.get('email');
         const customerPhone = urlParams.get('phone');
         const deliveryText = document.getElementById('dynamic-delivery-text');
@@ -260,6 +261,7 @@
             btn.disabled = true;
 
             const payload = {
+                customerName: customerName || "Student",
                 originalEmail: customerEmail || "Unknown",
                 updatedPhone: inputWa.value || null,
                 updatedEmail: inputEmail.value || null,
