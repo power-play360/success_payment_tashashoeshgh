@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmed | Diamond of Awareness</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .confirmation {
+            border-bottom: 1px solid #e1e8ed;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .success-icon {
+            font-size: 40px;
+            color: #0d9488; /* Deep Teal */
+            margin-bottom: 10px;
+        }
+
+        p.payment-received { font-size: 16px; color: #555; margin: 0 0 5px; }
+        p.check-email { font-size: 22px; font-weight: 600; color: #111; margin: 0 0 15px; }
+
+        /* Dynamic Delivery Info Section */
+        .delivery-info {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .delivery-text { font-size: 14px; color: #475569; margin: 0 0 15px 0; }
+        .delivery-text strong { color: #0f172a; }
+
+        .toggle-group {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 5px;
+        }
+
+        .toggle-label {
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .dynamic-form {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .platform-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+            display: none; /* Specific inputs hidden by default */
+        }
+
+        .platform-input:focus {
+            border-color: #0d9488;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        .request-btn {
+            background-color: #0d9488; /* Deep Teal */
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .request-btn:hover { background-color: #0f766e; }
+        .request-btn:disabled { background-color: #94a3b8; cursor: not-allowed; }
+
+        .success-msg {
+            display: none;
+            color: #0d9488;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Portrait & Typography */
+        .portrait-frame { margin: 0 auto 30px; max-width: 250px; }
+        .portrait-frame img { width: 100%; height: auto; border-radius: 8px; }
+        h1.course-title { font-size: 24px; font-weight: 700; margin: 0 0 5px; color: #111; }
+        h2.course-subtitle { font-size: 16px; font-weight: normal; color: #555; margin: 0 0 15px; }
+        p.instructor { font-size: 16px; color: #666; margin: 0 0 30px; }
+        
+        .course-description { font-size: 15px; color: #555; margin: 0 0 30px; text-align: justify; }
+        .description-en { margin-bottom: 20px; direction: ltr; text-align: left; }
+        .description-fa { direction: rtl; font-family: Tahoma, Arial, sans-serif; text-align: right; }
+        
+        p.support-email { font-size: 14px; color: #777; margin: 0; }
+
+        @media (max-width: 480px) {
+            .container { padding: 20px; margin: 20px; }
+            h1.course-title { font-size: 20px; }
+            h2.course-subtitle { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="confirmation">
+            <div class="success-icon">✓</div>
+            <p class="payment-received">We received your payment, Thank you!</p>
+            <p class="check-email">Registration Confirmed!</p>
+            
+            <div class="delivery-info">
+                <p class="delivery-text" id="dynamic-delivery-text">
+                    Your joining link has been sent to your registered email and phone number.
+                </p>
+                <!-- <p class="delivery-text" style="font-size: 13px; margin-bottom: 10px;">
+                    Need the link sent somewhere else? Select an option below:
+                </p> -->
+                
+                <!-- Checkboxes -->
+                <!-- <div class="toggle-group">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="check-whatsapp" onchange="toggleFields()"> WhatsApp
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="check-email" onchange="toggleFields()"> Email
+                    </label>
+                </div> -->
+
+                <!-- Dynamic Form -->
+                <form id="update-form" class="dynamic-form">
+                    <input type="tel" id="new-whatsapp" class="platform-input" placeholder="WhatsApp (e.g. +971004676300)">
+                    <input type="email" id="new-email" class="platform-input" placeholder="Email Address">
+                    <button type="submit" id="request-btn" class="request-btn">Request Link</button>
+                    <div id="success-msg" class="success-msg">✓ Link requested successfully!</div>
+                </form>
+            </div>
+        </div>
+
+        <div class="portrait-frame">
+            <img src="amethyst.jpeg" alt="Diamond of Awareness Image">
+        </div>
+
+        <h1 class="course-title">💎 الماس آگاهی | از خرد بزرگان</h1>
+        <h2 class="course-subtitle">Diamond of Awareness | Wisdom of the Masters</h2>
+        <p class="instructor">By : Headyeh Mozaffari</p>
+
+        <div class="course-description">
+            <p class="description-en">
+                Timeless truths passed down by great minds that transform the way we see life. Wisdom that illuminates the mind, soothes the heart, and guides us toward a deeper sense of inner peace.<br><br>
+                <strong>Every diamond, a truth; every truth, an awakening.</strong>
+            </p>
+            <p class="description-fa">
+                حقیقت‌هایی به‌یادگارمانده از بزرگان که نگاه ما را به زندگی دگرگون می‌کنند؛ آگاهی‌هایی که ذهن را روشن، دل را آرام و ما را به آرامشی عمیق‌تر نزدیک می‌کنند.<br><br>
+                <strong>هر الماس، یک حقیقت؛ هر حقیقت، یک بیداری.</strong>
+            </p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p class="support-email">Email : mozaffariheadyeh@tashashoeshgh.com</p>
+        </div>
+    </div>
+
+    <script>
+        // 1. Dynamic Text Replacement (Splitting Name and Phone if combined)
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        let customerEmail = urlParams.get('email');
+        let customerPhone = urlParams.get('phone') || urlParams.get('client_reference_id'); 
+        
+        // If you are using the "---" hack to pass the Name and Phone together, this splits them just for display
+        if (customerPhone && customerPhone.includes('---')) {
+            const splitData = customerPhone.split('---');
+            customerPhone = splitData[1]; 
+        }
+
+        const deliveryText = document.getElementById('dynamic-delivery-text');
+        
+        if (customerEmail && customerPhone) {
+            deliveryText.innerHTML = `Your joining link has been sent to <strong>${customerEmail}</strong> and <strong>${customerPhone}</strong>.`;
+        } else if (customerEmail) {
+            deliveryText.innerHTML = `Your joining link has been sent to <strong>${customerEmail}</strong>.`;
+        } else if (customerPhone) {
+            deliveryText.innerHTML = `Your joining link has been sent to <strong>${customerPhone}</strong>.`;
+        }
+
+        // 2. Toggle Form Fields Based on Checkboxes
+        function toggleFields() {
+            const checkWa = document.getElementById('check-whatsapp').checked;
+            const checkEmail = document.getElementById('check-email').checked;
+            const form = document.getElementById('update-form');
+            const inputWa = document.getElementById('new-whatsapp');
+            const inputEmail = document.getElementById('new-email');
+
+            // Show/Hide Entire Form
+            form.style.display = (checkWa || checkEmail) ? 'flex' : 'none';
+
+            // Toggle WhatsApp Input
+            if (checkWa) {
+                inputWa.style.display = 'block';
+                inputWa.required = true;
+            } else {
+                inputWa.style.display = 'none';
+                inputWa.required = false;
+                inputWa.value = ''; 
+            }
+
+            // Toggle Email Input
+            if (checkEmail) {
+                inputEmail.style.display = 'block';
+                inputEmail.required = true;
+            } else {
+                inputEmail.style.display = 'none';
+                inputEmail.required = false;
+                inputEmail.value = ''; 
+            }
+        }
+
+        // 3. Form Submission
+        document.getElementById('update-form').addEventListener('submit', async (e) => {
+            e.preventDefault(); 
+            
+            const btn = document.getElementById('request-btn');
+            const inputWa = document.getElementById('new-whatsapp');
+            const inputEmail = document.getElementById('new-email');
+            const successMsg = document.getElementById('success-msg');
+            
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+
+            const payload = {
+                customerName: urlParams.get('name') || "Student",
+                originalEmail: customerEmail || "Unknown",
+                originalPhone: customerPhone || "Unknown",
+                updatedPhone: inputWa.value || null,
+                updatedEmail: inputEmail.value || null,
+                source: "Confirmation Page Override"
+            };
+
+            try {
+                // Ensure this is your correct webhook for handling manual overrides 
+                const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/5nkapdwiviaowksmplnthtubi3bgcf3v";
+                
+                await fetch(MAKE_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Success UI
+                btn.style.display = 'none';
+                inputWa.style.display = 'none';
+                inputEmail.style.display = 'none';
+                
+                const toggleGroup = document.querySelector('.toggle-group');
+                if (toggleGroup) toggleGroup.style.display = 'none';
+                
+                successMsg.style.display = 'block';
+                
+            } catch (error) {
+                console.error("Webhook failed:", error);
+                btn.innerText = "Error. Please try again.";
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
